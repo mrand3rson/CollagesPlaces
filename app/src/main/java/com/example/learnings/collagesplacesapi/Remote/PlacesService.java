@@ -1,8 +1,9 @@
-package com.example.learnings.collagesplacesapi;
+package com.example.learnings.collagesplacesapi.Remote;
+
+import com.example.learnings.collagesplacesapi.Remote.PlacesResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 

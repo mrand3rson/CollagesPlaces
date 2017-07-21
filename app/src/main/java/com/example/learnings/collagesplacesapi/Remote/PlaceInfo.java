@@ -1,5 +1,6 @@
-package com.example.learnings.collagesplacesapi;
+package com.example.learnings.collagesplacesapi.Remote;
 
+import com.example.learnings.collagesplacesapi.Remote.Photo;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;

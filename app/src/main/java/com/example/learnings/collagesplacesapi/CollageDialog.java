@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.example.learnings.collagesplacesapi.Remote.AsyncPicCombiner;
+import com.example.learnings.collagesplacesapi.Remote.BitmapGetter;
+
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -33,7 +36,9 @@ public class CollageDialog extends DialogFragment {
         final View progress = v.findViewById(R.id.progress);
         final View layout = v.findViewById(R.id.layout);
 
+
         final ImageView image = (ImageView) v.findViewById(R.id.iv1);
+        this.getDialog().setTitle(getString(R.string.places));
         if (urls != null) {
             AsyncPicCombiner combiner = new AsyncPicCombiner(getContext(), new BitmapGetter() {
                 @Override
@@ -46,6 +51,8 @@ public class CollageDialog extends DialogFragment {
                 }
             });
             combiner.execute(urls);
+        } else {
+            this.dismiss();
         }
 
         ImageButton ib = (ImageButton) v.findViewById(R.id.ib2);

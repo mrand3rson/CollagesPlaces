@@ -1,4 +1,4 @@
-package com.example.learnings.collagesplacesapi;
+package com.example.learnings.collagesplacesapi.Remote;
 
 
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Build;
+
+import com.example.learnings.collagesplacesapi.R;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -20,8 +22,8 @@ public class AsyncPicCombiner extends AsyncTask<ArrayList<String>, Void, Void> {
     private final int offsetHeight = 5;
     private final int horizontalCount = 2;
     //private final int verticalCount = 2;
-    ArrayList<Bitmap> bitmapsArray;
-    BitmapGetter getter;
+    private ArrayList<Bitmap> bitmapsArray;
+    private BitmapGetter getter;
     private Context context;
     private int i;
 

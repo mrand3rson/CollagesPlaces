@@ -12,6 +12,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.learnings.collagesplacesapi.Remote.PlaceInfo;
+import com.example.learnings.collagesplacesapi.Remote.PlacesResponse;
+import com.example.learnings.collagesplacesapi.Remote.PlacesService;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.GoogleMap;
@@ -36,7 +39,6 @@ public class MapActivity extends FragmentActivity implements GoogleMap.OnMapClic
     final static String connectionFailed = "Connection failed";
     final static String checkFailed = "Check failed";
     final static String locationNull = "Location undefined";
-    Location myLocation;
     private GoogleMap mMap;
 
     @Override
@@ -73,7 +75,7 @@ public class MapActivity extends FragmentActivity implements GoogleMap.OnMapClic
                     Call<PlacesResponse> responseCall = service.load(locationString, 500, getString(R.string.google_maps_key));
                     responseCall.enqueue(new Callback<PlacesResponse>() {
                         @Override
-                        public void onResponse(Call<PlacesResponse> call, Response<PlacesResponse> response) {
+                        public void onResponse(@NonNull Call<PlacesResponse> call, @NonNull Response<PlacesResponse> response) {
                             if (response.body() != null) {
                                 List<PlaceInfo> places = response.body().places;
                                 if (places.size() >= 4) {
@@ -108,7 +110,7 @@ public class MapActivity extends FragmentActivity implements GoogleMap.OnMapClic
                         }
 
                         @Override
-                        public void onFailure(Call<PlacesResponse> call, Throwable t) {
+                        public void onFailure(@NonNull Call<PlacesResponse> call, @NonNull Throwable t) {
                             Toast.makeText(MapActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -165,7 +167,7 @@ public class MapActivity extends FragmentActivity implements GoogleMap.OnMapClic
             Call<PlacesResponse> responseCall = service.load(locationString, 500, getString(R.string.google_maps_key));
             responseCall.enqueue(new Callback<PlacesResponse>() {
                 @Override
-                public void onResponse(Call<PlacesResponse> call, Response<PlacesResponse> response) {
+                public void onResponse(@NonNull Call<PlacesResponse> call, @NonNull Response<PlacesResponse> response) {
                     if (response.body() != null) {
                         List<PlaceInfo> places = response.body().places;
                         if (places.size() >= 4) {
@@ -200,7 +202,7 @@ public class MapActivity extends FragmentActivity implements GoogleMap.OnMapClic
                 }
 
                 @Override
-                public void onFailure(Call<PlacesResponse> call, Throwable t) {
+                public void onFailure(@NonNull Call<PlacesResponse> call, @NonNull Throwable t) {
                     Toast.makeText(MapActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
                 }
             });

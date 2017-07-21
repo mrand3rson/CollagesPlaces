@@ -1,16 +1,16 @@
-package com.example.learnings.collagesplacesapi;
+package com.example.learnings.collagesplacesapi.Remote;
 
 import com.google.gson.annotations.SerializedName;
 
 
-public class Photo {
-    public String getPhotoRef() {
+class Photo {
+    String getPhotoRef() {
         return photoRef;
     }
-    public String getWidth() {
+    String getWidth() {
         return width;
     }
-    public String getHeight() {
+    String getHeight() {
         return height;
     }
 
